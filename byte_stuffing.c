@@ -11,6 +11,8 @@
  **/
 size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
 {
+  if(inBuf == NULL || outBuf == NULL || len == 0)
+    return 0;
   uint16_t crc = crc_ccitt(inBuf, len);
   size_t outBuf_i = 0;
   outBuf[outBuf_i] = STA;
@@ -35,6 +37,7 @@ size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
     else
       outBuf[outBuf_i++] = crc_arr[i];
   }
+  outBuf[outBuf_i++] = STP;
   return outBuf_i;
 }
 
@@ -49,6 +52,8 @@ size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
  **/
 size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
 {
+  if(inBuf == NULL || outBuf == NULL || len == 0)
+    return 0;
   if(inBuf[0] != STA)
     return 0;
   else if (inBuf[len - 1] != STP)
