@@ -36,7 +36,7 @@ size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf);
  * @param len   data length of input data
  * @return 16-bit CRC value
  **/
-uint16_t crc-ccitt(uint8_t *buf, size_t len);
+uint16_t crc_ccitt(uint8_t *buf, size_t len);
 
 static void init_crc_tab(void);
 static bool crc_tab_init = false;

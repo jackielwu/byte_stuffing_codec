@@ -11,12 +11,12 @@
  **/
 size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
 {
-  uint16_t crc = crc-ccitt(inBuf, len);
+  uint16_t crc = crc_ccitt(inBuf, len);
   size_t outBuf_i = 0;
   outBuf[outBuf_i] = STA;
   for(size_t i = 0; i < len; i++)
   {
-    if(inBuf[i] == STA || inBuf[i] == STP || inBuf == ESC)
+    if(inBuf[i] == STA || inBuf[i] == STP || inBuf[i] == ESC)
     {
       outBuf[outBuf_i++] = ESC;
       outBuf[outBuf_i++] = inBuf[i] ^ 0x20;
@@ -75,7 +75,7 @@ size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
       outBuf[outBuf_i++] = inBuf[i];
   }
   uint16_t crc = (uint16_t) outBuf[outBuf_i - 2] << 8 | outBuf[outBuf_i - 1];
-  if(crc != crc-ccitt(outBuf, outBuf_i - 2))
+  if(crc != crc_ccitt(outBuf, outBuf_i - 2))
     return 0;
   return outBuf_i;
 }
@@ -87,7 +87,7 @@ size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
  * @param len   data length of input data
  * @return 16-bit CRC value
  **/
-uint16_t crc-ccitt(uint8_t *buf, size_t len)
+uint16_t crc_ccitt(uint8_t *buf, size_t len)
 {
   // TODO Need initial values
   uint16_t crc = 0xFFFF;
