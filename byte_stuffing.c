@@ -24,7 +24,7 @@ size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
     else
       outBuf[outBuf_i++] = inBuf[i];
   }
-  uint8_t *crc_arr = (uint8_t) crc;
+  uint8_t *crc_arr = (uint8_t) *crc;
   for(size_t i = 0; i < 2; i++)
   {
     if(crc_arr[i] == STA || crc_arr[i] == STP || crc_arr[i] == ESC)

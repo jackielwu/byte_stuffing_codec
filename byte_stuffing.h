@@ -16,8 +16,7 @@ const uint8_t ESC = 0x27;
  * @return 0 if encode failed
  **/
 size_t encoding(uint8_t *inBuf, size_t len, uint8_t *outBuf);
- 
- 
+
 /**
  * Byte Stuffing Decoding routing
  *
