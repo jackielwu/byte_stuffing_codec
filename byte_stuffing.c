@@ -120,5 +120,5 @@ static void init_crc_tab(void)
 
 int main(int arc, char *argv[])
 {
-  print("Hello, World!\n");
+  printf("Hello, World!\n");
 }
