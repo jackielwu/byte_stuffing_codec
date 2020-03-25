@@ -17,7 +17,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: mac setup
-      run: brew install autotools
+      run: brew install automake
       if: runner.os == 'macOS'
     - name: setup
       run: ./am_setup
