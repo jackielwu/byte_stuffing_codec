@@ -117,3 +117,8 @@ static void init_crc_tab(void)
   }
   crc_tab_init = true;
 }
+
+int main(int arc, char *argv[])
+{
+  print("Hello, World!\n");
+}
