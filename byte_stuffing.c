@@ -1,6 +1,4 @@
 #include "byte_stuffing.h"
-#include <stdio.h>
-#include <stdbool.h>
 
 /**
  * Byte Stuffing Encoding routing
@@ -81,10 +79,6 @@ size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf)
     return 0;
   return outBuf_i;
 }
-
-static void init_crc_tab(void);
-static bool crc_tab_init = false;
-static uint16_t crc_tab[256];
 
 /**
  * Generate 16-bit CRC value using crc-ccitt

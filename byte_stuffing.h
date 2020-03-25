@@ -1,4 +1,6 @@
-
+#include <stdio.h>
+#include <stdbool.h>
+#include <stdint.h>
 const uint8_t STA = 0xC0;
 const uint8_t STP = 0xC1;
 const uint8_t ESC = 0x27;
@@ -35,3 +37,7 @@ size_t decoding(uint8_t *inBuf, size_t len, uint8_t *outBuf);
  * @return 16-bit CRC value
  **/
 uint16_t crc-ccitt(uint8_t *buf, size_t len);
+
+static void init_crc_tab(void);
+static bool crc_tab_init = false;
+static uint16_t crc_tab[256];
